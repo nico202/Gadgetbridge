@@ -1,0 +1,215 @@
+* char-desc
+| handle | uuid                                 |
+|--------+--------------------------------------|
+| 0x0001 | 00002800-0000-1000-8000-00805f9b34fb |
+| 0x0002 | 00002803-0000-1000-8000-00805f9b34fb |
+| 0x0003 | 00002a05-0000-1000-8000-00805f9b34fb |
+| 0x0004 | 00002902-0000-1000-8000-00805f9b34fb |
+| 0x0005 | 00002800-0000-1000-8000-00805f9b34fb |
+| 0x0006 | 00002803-0000-1000-8000-00805f9b34fb |
+| 0x0007 | 00002a00-0000-1000-8000-00805f9b34fb |
+| 0x0008 | 00002803-0000-1000-8000-00805f9b34fb |
+| 0x0009 | 00002a01-0000-1000-8000-00805f9b34fb |
+| 0x000a | 00002803-0000-1000-8000-00805f9b34fb |
+| 0x000b | 00002a04-0000-1000-8000-00805f9b34fb |
+| 0x000c | 00002800-0000-1000-8000-00805f9b34fb |
+| 0x000d | 00002803-0000-1000-8000-00805f9b34fb |
+| 0x000e | d973f2e2-b19e-11e2-9e96-0800200c9a66 |
+| 0x000f | 00002902-0000-1000-8000-00805f9b34fb |
+| 0x0010 | 00002803-0000-1000-8000-00805f9b34fb |
+| 0x0011 | d973f2e3-b19e-11e2-9e96-0800200c9a66 |
+| 0x0012 | 00002902-0000-1000-8000-00805f9b34fb |
+| 0x0013 | 00002803-0000-1000-8000-00805f9b34fb |
+| 0x0014 | d973f2e4-b19e-11e2-9e96-0800200c9a66 |
+| 0x0015 | 00002902-0000-1000-8000-00805f9b34fb |
+| 0x0016 | 00002803-0000-1000-8000-00805f9b34fb |
+| 0x0017 | d973f2e5-b19e-11e2-9e96-0800200c9a66 |
+| 0x0018 | 00002902-0000-1000-8000-00805f9b34fb |
+| 0x0019 | 00002803-0000-1000-8000-00805f9b34fb |
+| 0x001a | d973f2e6-b19e-11e2-9e96-0800200c9a66 |
+| 0x001b | 00002902-0000-1000-8000-00805f9b34fb |
+| 0x001c | 00002803-0000-1000-8000-00805f9b34fb |
+| 0x001d | d973f2e7-b19e-11e2-9e96-0800200c9a66 |
+| 0x001e | 00002902-0000-1000-8000-00805f9b34fb |
+| 0x001f | 00002803-0000-1000-8000-00805f9b34fb |
+| 0x0020 | d973f2e9-b19e-11e2-9e96-0800200c9a66 |
+| 0x0021 | 00002902-0000-1000-8000-00805f9b34fb |
+| 0x0022 | 00002803-0000-1000-8000-00805f9b34fb |
+| 0x0023 | d973f2ea-b19e-11e2-9e96-0800200c9a66 |
+| 0x0024 | 00002902-0000-1000-8000-00805f9b34fb |
+| 0x0025 | 00002803-0000-1000-8000-00805f9b34fb |
+| 0x0026 | d973f2eb-b19e-11e2-9e96-0800200c9a66 |
+| 0x0027 | 00002902-0000-1000-8000-00805f9b34fb |
+| 0x0028 | 00002803-0000-1000-8000-00805f9b34fb |
+| 0x0029 | d973f2ec-b19e-11e2-9e96-0800200c9a66 |
+| 0x002a | 00002800-0000-1000-8000-00805f9b34fb |
+| 0x002b | 00002803-0000-1000-8000-00805f9b34fb |
+| 0x002c | 00002a24-0000-1000-8000-00805f9b34fb |
+| 0x002d | 00002803-0000-1000-8000-00805f9b34fb |
+| 0x002e | 00002a25-0000-1000-8000-00805f9b34fb |
+| 0x002f | 00002803-0000-1000-8000-00805f9b34fb |
+| 0x0030 | 00002a26-0000-1000-8000-00805f9b34fb |
+| 0x0031 | 00002803-0000-1000-8000-00805f9b34fb |
+| 0x0032 | 00002a27-0000-1000-8000-00805f9b34fb |
+| 0x0033 | 00002803-0000-1000-8000-00805f9b34fb |
+| 0x0034 | 00002a29-0000-1000-8000-00805f9b34fb |
+| 0x0035 | 00002803-0000-1000-8000-00805f9b34fb |
+| 0x0036 | 00002a23-0000-1000-8000-00805f9b34fb |
+| 0x0037 | 00002800-0000-1000-8000-00805f9b34fb |
+| 0x0038 | 00002803-0000-1000-8000-00805f9b34fb |
+| 0x0039 | 00002a19-0000-1000-8000-00805f9b34fb |
+| 0x003a | 00002902-0000-1000-8000-00805f9b34fb |
+
+* Characteristics
+| handle | properties | char value handle | uuid                                 |
+|--------+------------+-------------------+--------------------------------------|
+| 0x0002 |       0x20 |            0x0003 | 00002a05-0000-1000-8000-00805f9b34fb |
+| 0x0006 |       0x4e |            0x0007 | 00002a00-0000-1000-8000-00805f9b34fb |
+| 0x0008 |       0x4e |            0x0009 | 00002a01-0000-1000-8000-00805f9b34fb |
+| 0x000a |       0x0a |            0x000b | 00002a04-0000-1000-8000-00805f9b34fb |
+| 0x000d |       0x18 |            0x000e | d973f2e2-b19e-11e2-9e96-0800200c9a66 |
+| 0x0010 |       0x18 |            0x0011 | d973f2e3-b19e-11e2-9e96-0800200c9a66 |
+| 0x0013 |       0x1a |            0x0014 | d973f2e4-b19e-11e2-9e96-0800200c9a66 |
+| 0x0016 |       0x12 |            0x0017 | d973f2e5-b19e-11e2-9e96-0800200c9a66 |
+| 0x0019 |       0x1a |            0x001a | d973f2e6-b19e-11e2-9e96-0800200c9a66 |
+| 0x001c |       0x1a |            0x001d | d973f2e7-b19e-11e2-9e96-0800200c9a66 |
+| 0x001f |       0x1a |            0x0020 | d973f2e9-b19e-11e2-9e96-0800200c9a66 |
+| 0x0022 |       0x12 |            0x0023 | d973f2ea-b19e-11e2-9e96-0800200c9a66 |
+| 0x0025 |       0x1a |            0x0026 | d973f2eb-b19e-11e2-9e96-0800200c9a66 |
+| 0x0028 |       0x04 |            0x0029 | d973f2ec-b19e-11e2-9e96-0800200c9a66 |
+| 0x002b |       0x02 |            0x002c | 00002a24-0000-1000-8000-00805f9b34fb |
+| 0x002d |       0x02 |            0x002e | 00002a25-0000-1000-8000-00805f9b34fb |
+| 0x002f |       0x02 |            0x0030 | 00002a26-0000-1000-8000-00805f9b34fb |
+| 0x0031 |       0x02 |            0x0032 | 00002a27-0000-1000-8000-00805f9b34fb |
+| 0x0033 |       0x02 |            0x0034 | 00002a29-0000-1000-8000-00805f9b346b |
+| 0x0035 |       0x02 |            0x0036 | 00002a23-0000-1000-8000-00805f9b34fb |
+| 0x0038 |       0x12 |            0x0039 | 00002a19-0000-1000-8000-00805f9b34fb |
+
+* Battery (handle: 0x0023)
+# real battry value
+93% ~= a8 47
+# charging
+38 49 00 00
+78 49 00 00
+# fully charged
+93 49 00 00
+# discharging
+88 47 00 00
+77 47 00 00
+52 47 00 00
+5d 47 00 00
+3b 47 00 00
+39 47 00 00
+2e 47 00 00
+25 47 00 00
+21 47 00 00
+1c 47 00 00
+0b 47 00 00
+08 47 00 00
+0a 47 00 00
+fe 46 00 00
+e1 46 00 00
+d1 46 00 00
+cb 46 00 00
+* Battery (handle: 0x0039) = hex value
+46
+5d
+5c
+5b
+* Volume (handle: 0x001d)
+# read (default)
+minimum (-22): e3
+max (6):       ff
+* Effects (handle: 0x0020): reverse [[ https://www.h-schmidt.net/FloatConverter/IEEE754.html][IEE754]] (read couple of bit in reverse)
+# write
+- [[/home/IITaudio/Downloads/HereActiveListening_v1.0.5_apkpure.com_source_from_JADX/assets/staticConfig/effects/echo/91c6a694-3221-11e5-a151-feff819cdc9f.json%0A][Echo]] (1) (length 24):
+  - Params: 3 (0, 0.3, 0.4)
+  - Enable (id)(padding = 0, 3bytes)(0.3, 0.4)
+    81 (00 00 00) (9a99993e) (cdcccc3e)
+  - Disable
+    01
+- [[/home/IITaudio/Downloads/HereActiveListening_v1.0.5_apkpure.com_source_from_JADX/assets/staticConfig/effects/reverb/91c6a90a-3221-11e5-a151-feff819cdc9f.json][Reverb]] (2) (length 32):
+  - Params: 4 (0, 1.8, 1.2, 0.015)
+  - Enable (id)(padding = 0, 3bytes)(1.8, 1.2, 0.015)
+    82 (00 00 00) (6666e63f) (9a99993f) (8fc2753c)
+  - Disable
+    02
+- [[/home/IITaudio/Downloads/HereActiveListening_v1.0.5_apkpure.com_source_from_JADX/assets/staticConfig/effects/noisemask/91c6b2e2-3221-11e5-a151-feff819cdc9f.json][Noise Mask]] (3):
+  - Length: 28
+  - Params: 4 (0, 0.1, 0.0, randomInt)
+  - Enable
+    83 (00 00 00) (cd cc cc 3d) (00 00 00 00) (79 59 82 d0)
+  - Disable
+    03
+- [[/home/IITaudio/Downloads/HereActiveListening_v1.0.5_apkpure.com_source_from_JADX/assets/staticConfig/effects/fuzz/91c6b21a-3221-11e5-a151-feff819cdc9f.json][Fuzz]] (length 32):
+  - Enable (0, 0.05, 0.02, 0.02, 60.0)
+    84 (000000) cdcc4c3d 0ad7a33c 0ad7a33c 00007042
+  - Disable
+    04
+- Tape (Disabled)
+  - Enable ??
+    85 000000 ??
+  - Disable
+    05
+- [[/home/IITaudio/Downloads/HereActiveListening_v1.0.5_apkpure.com_source_from_JADX/assets/staticConfig/effects/flange/91c6b080-3221-11e5-a151-feff819cdc9f.json][Flange]]
+  - Param # = 6 (0.3625, 0.009, 0.0, -0.7, 1.0)
+  - Enable 
+    87 cc5c 00bc7413 3c0000000 03333333f 0000803f
+  - Disable
+    07
+- [[/home/IITaudio/Downloads/HereActiveListening_v1.0.5_apkpure.com_source_from_JADX/assets/staticConfig/effects/bitcrusher/91c6abb2-3221-11e5-a151-feff819cdc9f.json][BitCrusher]] (9)
+  - Enable (enable works using the fuzz presets (but no sound at all))
+    89 (00 00 00) ???????? ????????
+  - Disable
+    09
+- [[/home/IITaudio/Downloads/HereActiveListening_v1.0.5_apkpure.com_source_from_JADX/assets/staticConfig/effects/bassboost/91c6aaea-3221-11e5-a151-feff819cdc9f.json][Bass Boost]] (16)
+  - Preset option # = 3 (0, -10, 10)
+  - Enable
+    90 (00 00 00) 000020c1 00002041
+  - Disable
+    10
+* [[~/EQ.log][EQ]] (0x0011):                                                       :finish:
+- INFO
+  + -20 = c1 a0 00 00 -> 00 00 a0 c1
+  + 10 = 41 20 00 00 -> 00 00 20 41
+- Presets (1)
+  - Line 1/5 (0100 0100 0500000000005943cdcc4c3f) +
+    0000 0020 (registered x2)
+    0000 a0c1 = -20 (minimum)
+    c185 220a = -16 
+    0000 2041 = 10 (maximum)
+  - 0101 0200 0600 0000 0080 1d44 fa7e 0a3f
+* Sleep Mode (0x0026)
+- SLEEP:
+  00
+- WAKE:
+  01
+* Presets                                                              :todo:
+1. NAME
+   (0x0020) - effects
+   - 00
+   - Reverb
+   (0x0011)
+
+* DEBUG (0x001a) ???
+# Don't even know that it does
+# read
+16 04 42 bb 3c c2 00 00 00 00 00 00 00 00 00 00 00 00 00 00 
+* Name (0x00007, uuid=2a00)
+48 4c 30 39 42 43 32 00 = HL09BC2
+REGEX: "H([LR])[A-F0-9]+|HERE-([LR])-[A-F0-9]+"
+orientation == group[0] == group[2]
+* Model number (0x002c):
+48 45 52 45 = "HERE"
+* Serial # (handle: 0x002e)
+AL63181009BC2
+* Firmware (handle: 0x0030)
+ 31 2e 31 2d 47 41 = HEX2ASCII = 1.1-GA
+* Hardware Version (handle: 0x0032)
+07000000
+
+* Manufacturer Name (0x0034)
+44 6f 70 70 6c 65 72 20 4c 61 62 73 = "Doppler Labs"
+
+* System Id (0x0036)
+ac e5 f0 ff fe 00 99 dc  ??
