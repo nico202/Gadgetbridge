@@ -15,6 +15,8 @@ public enum DeviceType {
     LIVEVIEW(30),
     HPLUS(40),
     MAKIBESF68(41),
+    HEREL(50), // Single device made of L + R
+    HERER(51), // But can be controlled independently
     TEST(1000);
 
     private final int key;
