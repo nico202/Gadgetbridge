@@ -100,10 +100,12 @@ import static nodomain.freeyourgadget.gadgetbridge.model.DeviceService.ACTION_SE
 import static nodomain.freeyourgadget.gadgetbridge.model.DeviceService.ACTION_SETTIME;
 import static nodomain.freeyourgadget.gadgetbridge.model.DeviceService.ACTION_SET_ALARMS;
 import static nodomain.freeyourgadget.gadgetbridge.model.DeviceService.ACTION_SET_CONSTANT_VIBRATION;
+import static nodomain.freeyourgadget.gadgetbridge.model.DeviceService.ACTION_SET_AUDIO_PROPERTY;
 import static nodomain.freeyourgadget.gadgetbridge.model.DeviceService.ACTION_START;
 import static nodomain.freeyourgadget.gadgetbridge.model.DeviceService.ACTION_STARTAPP;
 import static nodomain.freeyourgadget.gadgetbridge.model.DeviceService.ACTION_TEST_NEW_FUNCTION;
 import static nodomain.freeyourgadget.gadgetbridge.model.DeviceService.EXTRA_ALARMS;
+import static nodomain.freeyourgadget.gadgetbridge.model.DeviceService.EXTRA_AUDIO_PROPERTY;
 import static nodomain.freeyourgadget.gadgetbridge.model.DeviceService.EXTRA_APP_CONFIG;
 import static nodomain.freeyourgadget.gadgetbridge.model.DeviceService.EXTRA_APP_START;
 import static nodomain.freeyourgadget.gadgetbridge.model.DeviceService.EXTRA_APP_UUID;
@@ -123,6 +125,7 @@ import static nodomain.freeyourgadget.gadgetbridge.model.DeviceService.EXTRA_CAN
 import static nodomain.freeyourgadget.gadgetbridge.model.DeviceService.EXTRA_CONFIG;
 import static nodomain.freeyourgadget.gadgetbridge.model.DeviceService.EXTRA_CONNECT_FIRST_TIME;
 import static nodomain.freeyourgadget.gadgetbridge.model.DeviceService.EXTRA_FIND_START;
+
 import static nodomain.freeyourgadget.gadgetbridge.model.DeviceService.EXTRA_MUSIC_ALBUM;
 import static nodomain.freeyourgadget.gadgetbridge.model.DeviceService.EXTRA_MUSIC_ARTIST;
 import static nodomain.freeyourgadget.gadgetbridge.model.DeviceService.EXTRA_MUSIC_DURATION;
@@ -424,6 +427,12 @@ public class DeviceCommunicationService extends Service implements SharedPrefere
             case ACTION_SET_CONSTANT_VIBRATION: {
                 int intensity = intent.getIntExtra(EXTRA_VIBRATION_INTENSITY, 0);
                 mDeviceSupport.onSetConstantVibration(intensity);
+                break;
+            }
+            case ACTION_SET_AUDIO_PROPERTY: {
+                LOG.info(mDeviceSupport.getDevice().toString());
+                int volume = intent.getIntExtra(EXTRA_AUDIO_PROPERTY, 0);
+                mDeviceSupport.onSetAudioProperty(0, volume);
                 break;
             }
             case ACTION_CALLSTATE:

@@ -79,6 +79,8 @@ public interface EventHandler {
 
     void onSetConstantVibration(int integer);
 
+    void onSetAudioProperty(int property, int volume);
+
     void onScreenshotReq();
 
     void onEnableHeartRateSleepSupport(boolean enable);

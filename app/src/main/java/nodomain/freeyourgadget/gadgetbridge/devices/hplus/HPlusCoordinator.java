@@ -129,6 +129,11 @@ public class HPlusCoordinator extends AbstractDeviceCoordinator {
     }
 
     @Override
+    public boolean supportsAudioSettings() {
+        return false;
+    }
+
+    @Override
     public SampleProvider<? extends ActivitySample> getSampleProvider(GBDevice device, DaoSession session) {
         return new HPlusHealthSampleProvider(device, session);
     }

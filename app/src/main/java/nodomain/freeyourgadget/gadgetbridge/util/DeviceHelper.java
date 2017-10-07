@@ -51,6 +51,7 @@ import nodomain.freeyourgadget.gadgetbridge.devices.miband.MiBandCoordinator;
 import nodomain.freeyourgadget.gadgetbridge.devices.no1f1.No1F1Coordinator;
 import nodomain.freeyourgadget.gadgetbridge.devices.pebble.PebbleCoordinator;
 import nodomain.freeyourgadget.gadgetbridge.devices.vibratissimo.VibratissimoCoordinator;
+import nodomain.freeyourgadget.gadgetbridge.devices.here.HereCoordinator;
 import nodomain.freeyourgadget.gadgetbridge.entities.Device;
 import nodomain.freeyourgadget.gadgetbridge.entities.DeviceAttributes;
 import nodomain.freeyourgadget.gadgetbridge.impl.GBDevice;
@@ -198,6 +199,7 @@ public class DeviceHelper {
         result.add(new No1F1Coordinator());
         result.add(new MakibesF68Coordinator());
         result.add(new EXRIZUK8Coordinator());
+        result.add(new HereCoordinator());
         result.add(new TeclastH30Coordinator());
 
         return result;

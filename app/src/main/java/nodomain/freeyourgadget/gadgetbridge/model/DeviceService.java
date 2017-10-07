@@ -53,6 +53,7 @@ public interface DeviceService extends EventHandler {
     String ACTION_DISCONNECT = PREFIX + ".action.disconnect";
     String ACTION_FIND_DEVICE = PREFIX + ".action.find_device";
     String ACTION_SET_CONSTANT_VIBRATION = PREFIX + ".action.set_constant_vibration";
+    String ACTION_SET_AUDIO_PROPERTY = PREFIX + ".action.set_audio_property";
     String ACTION_SET_ALARMS = PREFIX + ".action.set_alarms";
     String ACTION_ENABLE_REALTIME_STEPS = PREFIX + ".action.enable_realtime_steps";
     String ACTION_REALTIME_SAMPLES = PREFIX + ".action.realtime_samples";
@@ -76,6 +77,7 @@ public interface DeviceService extends EventHandler {
     String EXTRA_NOTIFICATION_PEBBLE_COLOR = "notification_pebble_color";
     String EXTRA_FIND_START = "find_start";
     String EXTRA_VIBRATION_INTENSITY = "vibration_intensity";
+    String EXTRA_AUDIO_PROPERTY = "audio_property";
     String EXTRA_CALL_COMMAND = "call_command";
     String EXTRA_CALL_PHONENUMBER = "call_phonenumber";
     String EXTRA_CALL_DISPLAYNAME = "call_displayname";

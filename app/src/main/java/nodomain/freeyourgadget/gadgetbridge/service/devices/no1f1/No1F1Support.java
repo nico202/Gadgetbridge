@@ -356,6 +356,11 @@ public class No1F1Support extends AbstractBTLEDeviceSupport {
     }
 
     @Override
+    public void onSetAudioProperty(int property, int volume) {
+
+    }
+
+    @Override
     public void onDeleteCalendarEvent(byte type, long id) {
 
     }

@@ -106,6 +106,10 @@ public class LiveviewSupport extends AbstractSerialDeviceSupport {
     }
 
     @Override
+    public void onSetAudioProperty(int property, int volume) {
+    }
+
+    @Override
     public void onAddCalendarEvent(CalendarEventSpec calendarEventSpec) {
         //nothing to do ATM
     }

@@ -152,6 +152,11 @@ public class MiBandCoordinator extends AbstractDeviceCoordinator {
     }
 
     @Override
+    public boolean supportsAudioSettings() {
+        return false;
+    }
+
+    @Override
     public String getManufacturer() {
         return "Xiaomi";
     }

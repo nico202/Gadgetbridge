@@ -149,6 +149,14 @@ public interface DeviceCoordinator {
     boolean supportsActivityTracking();
 
     /**
+     * Returns true if audio settings is supported by the device
+     * (with this coordinator). Only HERE is supported right now
+     *
+     * @return
+     */
+    boolean supportsAudioSettings();
+
+    /**
      * Returns true if activity data fetching is supported AND possible at this
      * very moment. This will consider the device state (being connected/disconnected/busy...)
      * etc.

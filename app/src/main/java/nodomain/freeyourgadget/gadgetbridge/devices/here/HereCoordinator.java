@@ -15,7 +15,7 @@
 
     You should have received a copy of the GNU Affero General Public License
     along with this program.  If not, see <http://www.gnu.org/licenses/>. */
-package nodomain.freeyourgadget.gadgetbridge.devices.liveview;
+package nodomain.freeyourgadget.gadgetbridge.devices.here;
 
 import android.app.Activity;
 import android.content.Context;
@@ -24,6 +24,7 @@ import android.support.annotation.NonNull;
 
 import nodomain.freeyourgadget.gadgetbridge.GBException;
 import nodomain.freeyourgadget.gadgetbridge.R;
+import nodomain.freeyourgadget.gadgetbridge.activities.AudioActivity;
 import nodomain.freeyourgadget.gadgetbridge.devices.AbstractDeviceCoordinator;
 import nodomain.freeyourgadget.gadgetbridge.devices.InstallHandler;
 import nodomain.freeyourgadget.gadgetbridge.devices.SampleProvider;
@@ -34,19 +35,34 @@ import nodomain.freeyourgadget.gadgetbridge.impl.GBDeviceCandidate;
 import nodomain.freeyourgadget.gadgetbridge.model.ActivitySample;
 import nodomain.freeyourgadget.gadgetbridge.model.DeviceType;
 
-public class LiveviewCoordinator extends AbstractDeviceCoordinator {
+import java.util.regex.Pattern; // Regex match name
+import java.util.regex.Matcher; // Regex match name
+
+public class HereCoordinator extends AbstractDeviceCoordinator {
     @Override
     public DeviceType getSupportedType(GBDeviceCandidate candidate) {
         String name = candidate.getDevice().getName();
-        if (name != null && name.startsWith("LiveView")) {
-            return DeviceType.LIVEVIEW;
+        Pattern pat = Pattern.compile("H([LR])[A-F0-9]+|HERE-([LR])-[A-F0-9]+");
+        Matcher mat = pat.matcher(name);
+        // Identify if device is Left or Right
+        if (mat.matches()) {
+	    // get device type (L or R)
+	    // disabled until we find differences we need to handle
+            // if (mat.group(1).equals("L")) {
+            //     return DeviceType.HEREL;
+            // } else if (mat.group(1).equals("R")) {
+            //     return DeviceType.HERER;
+            // } else {
+		// Could not detect if L or R
+		return DeviceType.HERE;
+	    // }
         }
         return DeviceType.UNKNOWN;
     }
 
     @Override
     public DeviceType getDeviceType() {
-        return DeviceType.LIVEVIEW;
+        return DeviceType.HERE;
     }
 
     @Override
@@ -56,7 +72,7 @@ public class LiveviewCoordinator extends AbstractDeviceCoordinator {
 
     @Override
     public Class<? extends Activity> getPrimaryActivity() {
-        return null;
+        return AudioActivity.class;
     }
 
     @Override
@@ -76,7 +92,7 @@ public class LiveviewCoordinator extends AbstractDeviceCoordinator {
 
     @Override
     public boolean supportsAudioSettings() {
-        return false;
+        return true;
     }
 
     @Override
@@ -106,7 +122,7 @@ public class LiveviewCoordinator extends AbstractDeviceCoordinator {
 
     @Override
     public String getManufacturer() {
-        return "Sony Ericsson";
+        return "Doppler Labs";
     }
 
     @Override
@@ -126,7 +142,7 @@ public class LiveviewCoordinator extends AbstractDeviceCoordinator {
 
     @Override
     public boolean supportsRealtimeData() {
-        return false;
+        return false; // hmmm well, it has a temperature sensor :D
     }
 
     @Override

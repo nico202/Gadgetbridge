@@ -118,6 +118,11 @@ public class PebbleCoordinator extends AbstractDeviceCoordinator {
     }
 
     @Override
+    public boolean supportsAudioSettings() {
+        return false;
+    }
+
+    @Override
     public boolean supportsScreenshots() {
         return true;
     }

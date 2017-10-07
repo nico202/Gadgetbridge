@@ -115,6 +115,11 @@ public class TeclastH30Coordinator extends AbstractDeviceCoordinator {
     }
 
     @Override
+    public boolean supportsAudioSettings() {
+        return false;
+    }
+
+    @Override
     public SampleProvider<? extends ActivitySample> getSampleProvider(GBDevice device, DaoSession session) {
         return null;
     }

@@ -128,6 +128,11 @@ public class PebbleSupport extends AbstractSerialDeviceSupport {
     }
 
     @Override
+    public void onSetAudioProperty(int property, int volume) {
+
+    }
+
+    @Override
     public void onSetConstantVibration(int intensity) {
 
     }

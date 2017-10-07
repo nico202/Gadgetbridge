@@ -663,6 +663,12 @@ public class MiBand2Support extends AbstractBTLEDeviceSupport {
     public void onSetCannedMessages(CannedMessagesSpec cannedMessagesSpec) {
     }
 
+    @Override
+    public void onSetAudioProperty(int property, int volume) {
+
+    }
+
+
     private boolean isAlarmClockRinging() {
         // don't synchronize, this is not really important
         return alarmClockRinging;

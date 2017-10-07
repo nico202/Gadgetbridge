@@ -452,6 +452,11 @@ public class MiBandSupport extends AbstractBTLEDeviceSupport {
         // not supported
     }
 
+    @Override
+    public void onSetAudioProperty(int property, int volume) {
+
+    }
+
     /**
      * Part of device initialization process. Do not call manually.
      *

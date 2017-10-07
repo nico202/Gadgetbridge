@@ -153,6 +153,11 @@ public class ServiceDeviceSupport implements DeviceSupport {
     }
 
     @Override
+    public void onSetAudioProperty(int property, int intensity) {
+	delegate.onSetAudioProperty(property, intensity);
+    }
+
+    @Override
     public void onDeleteNotification(int id) {
         delegate.onDeleteNotification(id);
     }

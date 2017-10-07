@@ -287,6 +287,7 @@
     <string name="miband_prefs_fitness_goal">Target steps for each day</string>
     <string name="dbaccess_error_executing">Error executing \'%1$s\'</string>
     <string name="controlcenter_start_activitymonitor">Your activity (ALPHA)</string>
+    <string name="controlcenter_start_audiosetting">Audio Settings</string>
     <string name="cannot_connect">Cannot connect: %1$s</string>
     <string name="installer_activity_unable_to_find_handler">Unable to find a handler to install this file.</string>
     <string name="pbw_install_handler_unable_to_install">Unable to install the given file: %1$s</string>
@@ -474,4 +475,5 @@
     <string name="_pebble_watch_open_on_phone">Open on phone</string>
     <string name="_pebble_watch_mute">Mute</string>
     <string name="_pebble_watch_reply">Reply</string>
+    <string name="title_audio_activity">Audio Settings</string>
 </resources>

@@ -24,6 +24,9 @@ import android.database.Cursor;
 import android.net.Uri;
 import android.provider.ContactsContract;
 import android.support.annotation.Nullable;
+// FIXME: REMOVE
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.util.ArrayList;
 import java.util.UUID;
@@ -46,6 +49,9 @@ import static nodomain.freeyourgadget.gadgetbridge.util.JavaExtensions.coalesce;
 
 public class GBDeviceService implements DeviceService {
     protected final Context mContext;
+    // FIXME: REMOVE
+    private static final Logger LOG = LoggerFactory.getLogger(DeviceCommunicationService.class);
+
     private final Class<? extends Service> mServiceClass;
     private final String[] transliterationExtras = new String[]{
             EXTRA_NOTIFICATION_PHONENUMBER,
@@ -295,6 +301,14 @@ public class GBDeviceService implements DeviceService {
     public void onSetConstantVibration(int intensity) {
         Intent intent = createIntent().setAction(ACTION_SET_CONSTANT_VIBRATION)
                 .putExtra(EXTRA_VIBRATION_INTENSITY, intensity);
+        invokeService(intent);
+    }
+
+    @Override
+    public void onSetAudioProperty(int property, int intensity) {
+	// volume = 0
+	Intent intent = createIntent().setAction(ACTION_SET_AUDIO_PROPERTY)
+                .putExtra(EXTRA_AUDIO_PROPERTY, intensity);
         invokeService(intent);
     }
 

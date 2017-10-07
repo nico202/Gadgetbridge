@@ -186,6 +186,11 @@ public class VibratissimoSupport extends AbstractBTLEDeviceSupport {
     }
 
     @Override
+    public void onSetAudioProperty(int property, int volume) {
+
+    }
+
+    @Override
     public void onAppStart(UUID uuid, boolean start) {
 
     }

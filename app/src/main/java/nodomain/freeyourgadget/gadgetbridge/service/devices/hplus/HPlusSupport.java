@@ -432,6 +432,11 @@ public class HPlusSupport extends AbstractBTLEDeviceSupport {
     }
 
     @Override
+    public void onSetAudioProperty(int property, int volume) {
+
+    }
+
+    @Override
     public void onSetTime() {
 
         try {

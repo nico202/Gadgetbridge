@@ -38,10 +38,18 @@ import nodomain.freeyourgadget.gadgetbridge.service.devices.pebble.PebbleSupport
 import nodomain.freeyourgadget.gadgetbridge.service.devices.vibratissimo.VibratissimoSupport;
 import nodomain.freeyourgadget.gadgetbridge.service.devices.hplus.HPlusSupport;
 import nodomain.freeyourgadget.gadgetbridge.service.devices.jyou.TeclastH30Support;
+import nodomain.freeyourgadget.gadgetbridge.service.devices.here.HereSupport;
 import nodomain.freeyourgadget.gadgetbridge.util.GB;
 
+// delte both
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 public class DeviceSupportFactory {
+    // delete the following
+    private static final Logger LOG = LoggerFactory.getLogger(DeviceCommunicationService.class);
     private final BluetoothAdapter mBtAdapter;
+
     private final Context mContext;
 
     public DeviceSupportFactory(Context context) {
@@ -133,6 +141,11 @@ public class DeviceSupportFactory {
                         break;
                     case NO1F1:
                         deviceSupport = new ServiceDeviceSupport(new No1F1Support(), EnumSet.of(ServiceDeviceSupport.Flags.BUSY_CHECKING));
+                        break;
+                    case HERE:
+                    // case HERER:
+		    // case HEREL:
+                        deviceSupport = new ServiceDeviceSupport(new HereSupport(), EnumSet.of(ServiceDeviceSupport.Flags.BUSY_CHECKING));
                         break;
                     case TECLASTH30:
                         deviceSupport = new ServiceDeviceSupport(new TeclastH30Support(), EnumSet.of(ServiceDeviceSupport.Flags.BUSY_CHECKING));

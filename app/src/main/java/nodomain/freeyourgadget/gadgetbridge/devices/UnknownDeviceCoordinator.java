@@ -138,6 +138,11 @@ public class UnknownDeviceCoordinator extends AbstractDeviceCoordinator {
     }
 
     @Override
+    public boolean supportsAudioSettings() {
+        return false;
+    }
+
+    @Override
     public boolean supportsScreenshots() {
         return false;
     }
