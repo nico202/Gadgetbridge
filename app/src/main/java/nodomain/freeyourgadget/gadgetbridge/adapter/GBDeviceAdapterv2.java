@@ -42,12 +42,11 @@ import android.widget.Toast;
 import java.util.List;
 
 import nodomain.freeyourgadget.gadgetbridge.GBApplication;
-import nodomain.freeyourgadget.gadgetbridge.GBEnvironment;
 import nodomain.freeyourgadget.gadgetbridge.R;
 import nodomain.freeyourgadget.gadgetbridge.activities.ConfigureAlarms;
 import nodomain.freeyourgadget.gadgetbridge.activities.VibrationActivity;
 import nodomain.freeyourgadget.gadgetbridge.activities.charts.ChartsActivity;
-import nodomain.freeyourgadget.gadgetbridge.activities.AudioActivity;
+import nodomain.freeyourgadget.gadgetbridge.activities.AudioSettingsActivity;
 import nodomain.freeyourgadget.gadgetbridge.devices.DeviceCoordinator;
 import nodomain.freeyourgadget.gadgetbridge.devices.DeviceManager;
 import nodomain.freeyourgadget.gadgetbridge.impl.GBDevice;
@@ -221,7 +220,7 @@ public class GBDeviceAdapterv2 extends RecyclerView.Adapter<GBDeviceAdapterv2.Vi
 		public void onClick(View v) {
             showTransientSnackbar(R.string.controlcenter_snackbar_requested_screenshot);
 		    Intent startIntent;
-		    startIntent = new Intent(context, AudioActivity.class);
+		    startIntent = new Intent(context, AudioSettingsActivity.class);
 		    startIntent.putExtra(GBDevice.EXTRA_DEVICE, device);
 		    context.startActivity(startIntent);
 		}

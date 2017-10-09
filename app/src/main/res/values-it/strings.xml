@@ -396,4 +396,7 @@
   <string name="discovery_trying_to_connect_to">Tentativo di connessione con: %1$s</string>
   <string name="discovery_enable_bluetooth">Abilitare Bluetooth per l\'individuazione dei dispositivi.</string>
   <string name="discovery_dont_pair">Non connettersi</string>
+    <string name="audio_effect_echo">Echo</string>
+    <string name="audio_volume">Volume</string>
+    <string name="audio_effect_fuzz">Fuzz</string>
 </resources>

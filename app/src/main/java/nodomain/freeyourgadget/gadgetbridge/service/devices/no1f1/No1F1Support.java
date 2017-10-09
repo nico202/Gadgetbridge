@@ -42,6 +42,7 @@ import nodomain.freeyourgadget.gadgetbridge.deviceevents.GBDeviceEventBatteryInf
 import nodomain.freeyourgadget.gadgetbridge.deviceevents.GBDeviceEventVersionInfo;
 import nodomain.freeyourgadget.gadgetbridge.devices.no1f1.No1F1Constants;
 import nodomain.freeyourgadget.gadgetbridge.devices.no1f1.No1F1SampleProvider;
+import nodomain.freeyourgadget.gadgetbridge.entities.AudioEffectType;
 import nodomain.freeyourgadget.gadgetbridge.entities.No1F1ActivitySample;
 import nodomain.freeyourgadget.gadgetbridge.impl.GBDevice;
 import nodomain.freeyourgadget.gadgetbridge.model.ActivityKind;
@@ -356,7 +357,7 @@ public class No1F1Support extends AbstractBTLEDeviceSupport {
     }
 
     @Override
-    public void onSetAudioProperty(int property, int volume) {
+    public void onSetAudioProperty(int property, float[] params) {
 
     }
 

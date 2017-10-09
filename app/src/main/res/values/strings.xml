@@ -476,4 +476,18 @@
     <string name="_pebble_watch_mute">Mute</string>
     <string name="_pebble_watch_reply">Reply</string>
     <string name="title_audio_activity">Audio Settings</string>
+    <string name="audio_effect_echo">Echo</string>
+    <string name="audio_effect_reverb">Reverb</string>
+    <string name="audio_effect_noisemask">Noise mask</string>
+    <string name="audio_effect_flange">Flange</string>
+    <string name="audio_volume">Volume</string>
+    <string name="audio_effect_fuzz">Fuzz</string>
+    <string name="audio_effect_bassboost">Bass boost</string>
+    <string name="audio_equalizer">Equalizer (EQ)</string>
+    <!-- Space to align with the longer one -->
+    <string name="equalizer_band_0"> 180 Hz</string>
+    <string name="equalizer_band_1"> 360 Hz</string>
+    <string name="equalizer_band_2">1.1 kHz</string>
+    <string name="equalizer_band_3">3.3 kHz</string>
+    <string name="equalizer_band_4">6.8 kHz</string>
 </resources>

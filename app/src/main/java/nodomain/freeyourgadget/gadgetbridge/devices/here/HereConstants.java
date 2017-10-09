@@ -22,4 +22,5 @@ public final class HereConstants {
     public static final UUID UUID_VOLUME = UUID.fromString(String.format(BASE_HERE_UUID, "e7"));
     // TODO: Put device in sleep mode, (byte)0x00 sleep, (byte)0x01 wake
     public static final UUID UUID_SLEEP = UUID.fromString(String.format(BASE_HERE_UUID, "eb"));
+    public static final UUID UUID_EFFECTS = UUID.fromString(String.format(BASE_HERE_UUID, "e9"));
 }

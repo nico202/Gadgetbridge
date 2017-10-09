@@ -21,6 +21,7 @@ import android.net.Uri;
 import java.util.ArrayList;
 import java.util.UUID;
 
+import nodomain.freeyourgadget.gadgetbridge.entities.AudioEffectType;
 import nodomain.freeyourgadget.gadgetbridge.model.Alarm;
 import nodomain.freeyourgadget.gadgetbridge.model.CalendarEventSpec;
 import nodomain.freeyourgadget.gadgetbridge.model.CallSpec;
@@ -106,7 +107,7 @@ public class LiveviewSupport extends AbstractSerialDeviceSupport {
     }
 
     @Override
-    public void onSetAudioProperty(int property, int volume) {
+    public void onSetAudioProperty(int property, float[] params) {
     }
 
     @Override

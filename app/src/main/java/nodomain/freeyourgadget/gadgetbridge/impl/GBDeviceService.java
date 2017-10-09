@@ -33,6 +33,7 @@ import java.util.UUID;
 
 import nodomain.freeyourgadget.gadgetbridge.GBApplication;
 import nodomain.freeyourgadget.gadgetbridge.R;
+import nodomain.freeyourgadget.gadgetbridge.entities.AudioEffectType;
 import nodomain.freeyourgadget.gadgetbridge.model.Alarm;
 import nodomain.freeyourgadget.gadgetbridge.model.CalendarEventSpec;
 import nodomain.freeyourgadget.gadgetbridge.model.CallSpec;
@@ -305,10 +306,11 @@ public class GBDeviceService implements DeviceService {
     }
 
     @Override
-    public void onSetAudioProperty(int property, int intensity) {
+    public void onSetAudioProperty(int property, float[] params) {
 	// volume = 0
 	Intent intent = createIntent().setAction(ACTION_SET_AUDIO_PROPERTY)
-                .putExtra(EXTRA_AUDIO_PROPERTY, intensity);
+                .putExtra(EXTRA_AUDIO_PROPERTY, property)
+            .putExtra(EXTRA_AUDIO_PARAMS, params);
         invokeService(intent);
     }
 

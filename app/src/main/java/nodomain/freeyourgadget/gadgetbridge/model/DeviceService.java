@@ -20,6 +20,7 @@ package nodomain.freeyourgadget.gadgetbridge.model;
 import android.support.annotation.Nullable;
 
 import nodomain.freeyourgadget.gadgetbridge.devices.EventHandler;
+import nodomain.freeyourgadget.gadgetbridge.entities.AudioEffectType;
 import nodomain.freeyourgadget.gadgetbridge.impl.GBDevice;
 import nodomain.freeyourgadget.gadgetbridge.service.DeviceCommunicationService;
 
@@ -78,6 +79,7 @@ public interface DeviceService extends EventHandler {
     String EXTRA_FIND_START = "find_start";
     String EXTRA_VIBRATION_INTENSITY = "vibration_intensity";
     String EXTRA_AUDIO_PROPERTY = "audio_property";
+    String EXTRA_AUDIO_PARAMS = "audio_params";
     String EXTRA_CALL_COMMAND = "call_command";
     String EXTRA_CALL_PHONENUMBER = "call_phonenumber";
     String EXTRA_CALL_DISPLAYNAME = "call_displayname";
@@ -154,4 +156,6 @@ public interface DeviceService extends EventHandler {
      * from the service will be reported.
      */
     void requestDeviceInfo();
+
+    void onSetAudioProperty(int property, float[] params);
 }

@@ -105,6 +105,7 @@ import static nodomain.freeyourgadget.gadgetbridge.model.DeviceService.ACTION_ST
 import static nodomain.freeyourgadget.gadgetbridge.model.DeviceService.ACTION_STARTAPP;
 import static nodomain.freeyourgadget.gadgetbridge.model.DeviceService.ACTION_TEST_NEW_FUNCTION;
 import static nodomain.freeyourgadget.gadgetbridge.model.DeviceService.EXTRA_ALARMS;
+import static nodomain.freeyourgadget.gadgetbridge.model.DeviceService.EXTRA_AUDIO_PARAMS;
 import static nodomain.freeyourgadget.gadgetbridge.model.DeviceService.EXTRA_AUDIO_PROPERTY;
 import static nodomain.freeyourgadget.gadgetbridge.model.DeviceService.EXTRA_APP_CONFIG;
 import static nodomain.freeyourgadget.gadgetbridge.model.DeviceService.EXTRA_APP_START;
@@ -431,8 +432,12 @@ public class DeviceCommunicationService extends Service implements SharedPrefere
             }
             case ACTION_SET_AUDIO_PROPERTY: {
                 LOG.info(mDeviceSupport.getDevice().toString());
-                int volume = intent.getIntExtra(EXTRA_AUDIO_PROPERTY, 0);
-                mDeviceSupport.onSetAudioProperty(0, volume);
+                int property = intent.getIntExtra(EXTRA_AUDIO_PROPERTY, 999);
+                float [] params = intent.getFloatArrayExtra(EXTRA_AUDIO_PARAMS);
+                LOG.debug(" "+property);
+                LOG.debug(""+params[0]);
+                mDeviceSupport.onSetAudioProperty(property, params);
+                LOG.debug("Called");
                 break;
             }
             case ACTION_CALLSTATE:

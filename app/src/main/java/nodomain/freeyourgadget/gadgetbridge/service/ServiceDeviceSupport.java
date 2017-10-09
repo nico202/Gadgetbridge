@@ -28,6 +28,7 @@ import java.util.ArrayList;
 import java.util.EnumSet;
 import java.util.UUID;
 
+import nodomain.freeyourgadget.gadgetbridge.entities.AudioEffectType;
 import nodomain.freeyourgadget.gadgetbridge.impl.GBDevice;
 import nodomain.freeyourgadget.gadgetbridge.model.Alarm;
 import nodomain.freeyourgadget.gadgetbridge.model.CalendarEventSpec;
@@ -153,8 +154,8 @@ public class ServiceDeviceSupport implements DeviceSupport {
     }
 
     @Override
-    public void onSetAudioProperty(int property, int intensity) {
-	delegate.onSetAudioProperty(property, intensity);
+    public void onSetAudioProperty(int property, float [] params) {
+	delegate.onSetAudioProperty(property, params);
     }
 
     @Override

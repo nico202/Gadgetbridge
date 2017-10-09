@@ -23,8 +23,7 @@ import android.net.Uri;
 import android.support.annotation.NonNull;
 
 import nodomain.freeyourgadget.gadgetbridge.GBException;
-import nodomain.freeyourgadget.gadgetbridge.R;
-import nodomain.freeyourgadget.gadgetbridge.activities.AudioActivity;
+import nodomain.freeyourgadget.gadgetbridge.activities.AudioSettingsActivity;
 import nodomain.freeyourgadget.gadgetbridge.devices.AbstractDeviceCoordinator;
 import nodomain.freeyourgadget.gadgetbridge.devices.InstallHandler;
 import nodomain.freeyourgadget.gadgetbridge.devices.SampleProvider;
@@ -72,7 +71,7 @@ public class HereCoordinator extends AbstractDeviceCoordinator {
 
     @Override
     public Class<? extends Activity> getPrimaryActivity() {
-        return AudioActivity.class;
+        return AudioSettingsActivity.class;
     }
 
     @Override
