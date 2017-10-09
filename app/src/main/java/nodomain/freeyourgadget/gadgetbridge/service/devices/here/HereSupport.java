@@ -25,11 +25,13 @@ import org.slf4j.LoggerFactory;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 import java.util.UUID;
 
 import nodomain.freeyourgadget.gadgetbridge.deviceevents.GBDeviceEventBatteryInfo;
 import nodomain.freeyourgadget.gadgetbridge.deviceevents.GBDeviceEventVersionInfo;
 import nodomain.freeyourgadget.gadgetbridge.devices.here.HereConstants;
+import nodomain.freeyourgadget.gadgetbridge.entities.AudioEffect;
 import nodomain.freeyourgadget.gadgetbridge.entities.AudioEffectType;
 import nodomain.freeyourgadget.gadgetbridge.impl.GBDevice;
 import nodomain.freeyourgadget.gadgetbridge.model.Alarm;
@@ -84,6 +86,7 @@ public class HereSupport extends AbstractBTLEDeviceSupport {
 
         gbDevice.setState(GBDevice.State.INITIALIZED);
         gbDevice.sendDeviceUpdateIntent(getContext());
+	requestCurrentVolume();
 
         LOG.info("Initialization Done");
 
@@ -159,57 +162,15 @@ public class HereSupport extends AbstractBTLEDeviceSupport {
     }
 
     @Override
-    public void onSetAudioProperty(int property, float[] params) {
-        AudioEffectType effect = AudioEffectType.getByEffectId(property);
+    public void onSetAudioProperty(AudioEffect effect) {
         TransactionBuilder builder = createTransactionBuilder("SetAudio");
-
-        switch (effect) {
-            case VOLUME: // volume
-                LOG.info("Setting the audio volume");
-                if (params.length != 1) {
-                    LOG.error("Wrong number of params");
-                    break;
-                }
-                // Only one param, the volume (int)
-                int volume = (int) params[0];
-                builder.write(volumeCharacteristic, new byte[]{(byte) volume});
-                break;
-            case ECHO:
-            case REVERB:
-            case NOISEMASK:
-            case FUZZ:
-            case FLANGE:
-            case BASSBOOST:
-                /*if (params.length < 2) {
-                    LOG.error("Wrong number of params");
-                    break;
-                }*/
-                // Bt dump: 81 (00 00 00) (9a99993e) (cdcccc3e)
-                // We add as a first param a boolean (enable/disable)
-                boolean enable = params[0] == 1.0; // 1.0 is true, other false
-                // float[] audioparams = Arrays.copyOfRange(params,1,params.length-1);
-                // enable with 80 + effect_id,
-                // disable with effect_id
-                byte[] message;
-                if (!enable) {
-                    LOG.info("Disabling the " + effect.name() + " effect");
-                    // To disable an effect, you just need to transmit its effect id
-                    message = new byte[] {(byte) effect.getId()};
-                } else {
-                    LOG.info("Enabling the " + effect.name() + " effect");
-                    message = createMessage(effect);
-                }
-                builder.write(effectCharacteristic, message);
-                break;
-            case EQ:
-                LOG.info("Enabling the EQ effect");
-                LOG.warn("Still not implemented");
-                break;
-            default:
-                LOG.warn("Programming error! non-existent audio effect value");
-                break;
+        BluetoothGattCharacteristic characteristic;
+        if (effect.getType() == AudioEffectType.VOLUME) {
+            characteristic = volumeCharacteristic;
+        } else {
+            characteristic = effectCharacteristic;
         }
-
+        builder.write(characteristic, effect.toByteMessage());
         builder.queue(getQueue());
     }
 
@@ -224,7 +185,6 @@ public class HereSupport extends AbstractBTLEDeviceSupport {
 
     @Override
     public void onEnableRealtimeSteps(boolean enable) {
-        onEnableRealtimeHeartRateMeasurement(enable);
     }
 
     @Override
@@ -321,90 +281,17 @@ public class HereSupport extends AbstractBTLEDeviceSupport {
     // TODO: USE THIS
     // private byte[] effectMessage(int id, int padding, float [] params) {};
 
+    public int requestCurrentVolume() {
+        TransactionBuilder builder = createTransactionBuilder("getAudio");
+        builder.read(volumeCharacteristic);
+        LOG.debug(builder.toString());
+        return 1;
+    }
+
     private byte[] createMessage(AudioEffectType effect) {
         byte [] message;
-        // TODO: replace this with FloatToReverseIEE754
-        switch (effect) {
-            case ECHO:
-                message = new byte[]{
-                        (byte) (effect.getId() + 0x80),
-                        (byte) 0x00, (byte) 0x00, (byte) 0x00, // padding
-                        (byte) 0x9a, (byte) 0x99, (byte) 0x99, (byte) 0x3e, // 0.3
-                        (byte) 0xcd, (byte) 0xcc, (byte) 0xcc, (byte) 0x3e // 0.4
-                };
-                break;
-
-            case REVERB:
-                message = new byte[]{
-                        (byte) (effect.getId() + 0x80),
-                        (byte) 0x00, (byte) 0x00, (byte) 0x00, // padding
-                        (byte) 0x66, (byte) 0x66, (byte) 0xe6, (byte) 0x3f,
-                        (byte) 0x9a, (byte) 0x99, (byte) 0x99, (byte) 0x3f,
-                        (byte) 0x8f, (byte) 0xc2, (byte) 0x75, (byte) 0x3c
-                };
-                break;
-
-            case NOISEMASK:
-                message = new byte[]{
-                        (byte) (effect.getId() + 0x80),
-                        (byte) 0x00, (byte) 0x00, (byte) 0x00, // padding
-                        (byte) 0xcd, (byte) 0xcc, (byte) 0xcc, (byte) 0x3d,
-                        (byte) 0x00, (byte) 0x00, (byte) 0x00, (byte) 0x00,
-                        (byte) 0x79, (byte) 0x59, (byte) 0x82, (byte) 0xd0
-                };
-                break;
-
-            case FUZZ:
-                message = new byte[]{
-                        (byte) (effect.getId() + 0x80),
-                        (byte) 0x00, (byte) 0x00, (byte) 0x00, // padding
-                        (byte) 0xcd, (byte) 0xcc, (byte) 0x4c, (byte) 0x3d,
-                        (byte) 0x0a, (byte) 0xd7, (byte) 0xa3, (byte) 0x3c,
-                        (byte) 0x0a, (byte) 0xd7, (byte) 0xa3, (byte) 0x3c,
-                        (byte) 0x00, (byte) 0x00, (byte) 0x70, (byte) 0x42
-                };
-                break;
-
-            case FLANGE:
-                message = new byte[] {
-                        (byte) (effect.getId() + 0x80),
-                        (byte) 0xcc, (byte) 0x5c, (byte) 0x00, // 0.3625 (fixed point ?fract24)
-                        (byte) 0xbc, (byte) 0x74, (byte) 0x13, (byte) 0x3c,
-                        (byte) 0x00, (byte) 0x00, (byte) 0x00, (byte) 0x00,
-                        (byte) 0x33, (byte) 0x33, (byte) 0x33, (byte) 0x3f,
-                        (byte) 0x00, (byte) 0x00, (byte) 0x80, (byte) 0x3f
-                };
-                break;
-
-            case BASSBOOST:
-                message = new byte[]{
-                        (byte) (effect.getId() + 0x80),
-                        (byte) 0x00, (byte) 0x00, (byte) 0x00,
-                        (byte) 0x00, (byte) 0x00, (byte) 0x20, (byte) 0xc1,
-                        (byte) 0x00, (byte) 0x00, (byte) 0x20, (byte) 0x41
-                };
-                break;
-
-            default:
-                LOG.warn("Programming error! Enabled a non-existent effect (" +
-                        effect.name()
-                        + "!");
-                message = new byte[]{};
-        }
+        AudioEffect eff = new AudioEffect(effect, true); // default params!
+        message = eff.toByteMessage();
         return message;
     }
-
-    static byte[] FloatToReverseIEE754(float value) {
-        // Thanks to Maldivia on IRC #java
-        // and to https://stackoverflow.com/questions/2183240/java-integer-to-byte-array#2183279
-        int i = Float.floatToRawIntBits(value);
-        i = (i << 9) | (i >>> 23) & 0x1ff;
-        return new byte [] {
-                (byte)(i >>> 24),
-                (byte)(i >>> 16),
-                (byte)(i >>> 8),
-                (byte) value
-        };
-    }
-
 }

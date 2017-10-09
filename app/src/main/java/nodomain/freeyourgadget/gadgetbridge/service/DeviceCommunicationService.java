@@ -39,6 +39,7 @@ import android.widget.Toast;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Random;
 import java.util.UUID;
@@ -46,6 +47,7 @@ import java.util.UUID;
 import nodomain.freeyourgadget.gadgetbridge.GBApplication;
 import nodomain.freeyourgadget.gadgetbridge.R;
 import nodomain.freeyourgadget.gadgetbridge.devices.DeviceCoordinator;
+import nodomain.freeyourgadget.gadgetbridge.entities.AudioEffect;
 import nodomain.freeyourgadget.gadgetbridge.externalevents.AlarmClockReceiver;
 import nodomain.freeyourgadget.gadgetbridge.externalevents.AlarmReceiver;
 import nodomain.freeyourgadget.gadgetbridge.externalevents.BluetoothConnectReceiver;
@@ -105,7 +107,6 @@ import static nodomain.freeyourgadget.gadgetbridge.model.DeviceService.ACTION_ST
 import static nodomain.freeyourgadget.gadgetbridge.model.DeviceService.ACTION_STARTAPP;
 import static nodomain.freeyourgadget.gadgetbridge.model.DeviceService.ACTION_TEST_NEW_FUNCTION;
 import static nodomain.freeyourgadget.gadgetbridge.model.DeviceService.EXTRA_ALARMS;
-import static nodomain.freeyourgadget.gadgetbridge.model.DeviceService.EXTRA_AUDIO_PARAMS;
 import static nodomain.freeyourgadget.gadgetbridge.model.DeviceService.EXTRA_AUDIO_PROPERTY;
 import static nodomain.freeyourgadget.gadgetbridge.model.DeviceService.EXTRA_APP_CONFIG;
 import static nodomain.freeyourgadget.gadgetbridge.model.DeviceService.EXTRA_APP_START;
@@ -218,7 +219,7 @@ public class DeviceCommunicationService extends Service implements SharedPrefere
             if (action.equals(GBDevice.ACTION_DEVICE_CHANGED)) {
                 GBDevice device = intent.getParcelableExtra(GBDevice.EXTRA_DEVICE);
                 if (mGBDevice != null && mGBDevice.equals(device)) {
-                    mGBDevice = device;
+                    mGBDevice = device; // if is already .equals, why set it?
                     boolean enableReceivers = mDeviceSupport != null && (mDeviceSupport.useAutoConnect() || mGBDevice.isInitialized());
                     setReceiversEnableState(enableReceivers, mGBDevice.isInitialized(), DeviceHelper.getInstance().getCoordinator(device));
                     GB.updateNotification(mGBDevice.getName() + " " + mGBDevice.getStateString(), mGBDevice.isInitialized(), context);
@@ -431,13 +432,8 @@ public class DeviceCommunicationService extends Service implements SharedPrefere
                 break;
             }
             case ACTION_SET_AUDIO_PROPERTY: {
-                LOG.info(mDeviceSupport.getDevice().toString());
-                int property = intent.getIntExtra(EXTRA_AUDIO_PROPERTY, 999);
-                float [] params = intent.getFloatArrayExtra(EXTRA_AUDIO_PARAMS);
-                LOG.debug(" "+property);
-                LOG.debug(""+params[0]);
-                mDeviceSupport.onSetAudioProperty(property, params);
-                LOG.debug("Called");
+                AudioEffect effect = (AudioEffect) intent.getSerializableExtra(EXTRA_AUDIO_PROPERTY);
+                mDeviceSupport.onSetAudioProperty(effect);
                 break;
             }
             case ACTION_CALLSTATE:

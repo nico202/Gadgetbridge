@@ -63,6 +63,7 @@ import nodomain.freeyourgadget.gadgetbridge.devices.miband.MiBandConst;
 import nodomain.freeyourgadget.gadgetbridge.devices.miband.MiBandCoordinator;
 import nodomain.freeyourgadget.gadgetbridge.devices.miband.MiBandService;
 import nodomain.freeyourgadget.gadgetbridge.devices.miband.VibrationProfile;
+import nodomain.freeyourgadget.gadgetbridge.entities.AudioEffect;
 import nodomain.freeyourgadget.gadgetbridge.entities.AudioEffectType;
 import nodomain.freeyourgadget.gadgetbridge.entities.DaoSession;
 import nodomain.freeyourgadget.gadgetbridge.entities.Device;
@@ -665,7 +666,7 @@ public class MiBand2Support extends AbstractBTLEDeviceSupport {
     }
 
     @Override
-    public void onSetAudioProperty(int property, float[] params) {
+    public void onSetAudioProperty(AudioEffect effect) {
 
     }
 

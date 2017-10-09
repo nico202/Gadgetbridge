@@ -49,6 +49,7 @@ import nodomain.freeyourgadget.gadgetbridge.activities.SettingsActivity;
 import nodomain.freeyourgadget.gadgetbridge.deviceevents.GBDeviceEventBatteryInfo;
 import nodomain.freeyourgadget.gadgetbridge.devices.hplus.HPlusConstants;
 import nodomain.freeyourgadget.gadgetbridge.devices.hplus.HPlusCoordinator;
+import nodomain.freeyourgadget.gadgetbridge.entities.AudioEffect;
 import nodomain.freeyourgadget.gadgetbridge.entities.AudioEffectType;
 import nodomain.freeyourgadget.gadgetbridge.impl.GBDevice;
 import nodomain.freeyourgadget.gadgetbridge.model.Alarm;
@@ -433,7 +434,7 @@ public class HPlusSupport extends AbstractBTLEDeviceSupport {
     }
 
     @Override
-    public void onSetAudioProperty(int property, float[] params) {
+    public void onSetAudioProperty(AudioEffect effect) {
 
     }
 

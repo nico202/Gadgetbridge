@@ -24,16 +24,14 @@ import android.database.Cursor;
 import android.net.Uri;
 import android.provider.ContactsContract;
 import android.support.annotation.Nullable;
-// FIXME: REMOVE
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.UUID;
 
 import nodomain.freeyourgadget.gadgetbridge.GBApplication;
 import nodomain.freeyourgadget.gadgetbridge.R;
-import nodomain.freeyourgadget.gadgetbridge.entities.AudioEffectType;
+import nodomain.freeyourgadget.gadgetbridge.entities.AudioEffect;
 import nodomain.freeyourgadget.gadgetbridge.model.Alarm;
 import nodomain.freeyourgadget.gadgetbridge.model.CalendarEventSpec;
 import nodomain.freeyourgadget.gadgetbridge.model.CallSpec;
@@ -50,8 +48,6 @@ import static nodomain.freeyourgadget.gadgetbridge.util.JavaExtensions.coalesce;
 
 public class GBDeviceService implements DeviceService {
     protected final Context mContext;
-    // FIXME: REMOVE
-    private static final Logger LOG = LoggerFactory.getLogger(DeviceCommunicationService.class);
 
     private final Class<? extends Service> mServiceClass;
     private final String[] transliterationExtras = new String[]{
@@ -306,11 +302,10 @@ public class GBDeviceService implements DeviceService {
     }
 
     @Override
-    public void onSetAudioProperty(int property, float[] params) {
-	// volume = 0
-	Intent intent = createIntent().setAction(ACTION_SET_AUDIO_PROPERTY)
-                .putExtra(EXTRA_AUDIO_PROPERTY, property)
-            .putExtra(EXTRA_AUDIO_PARAMS, params);
+    public void onSetAudioProperty(AudioEffect effect) {
+        // volume = 0
+        Intent intent = createIntent().setAction(ACTION_SET_AUDIO_PROPERTY)
+                .putExtra(EXTRA_AUDIO_PROPERTY, (Serializable) effect);
         invokeService(intent);
     }
 

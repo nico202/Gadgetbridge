@@ -143,8 +143,8 @@ public class DeviceSupportFactory {
                         deviceSupport = new ServiceDeviceSupport(new No1F1Support(), EnumSet.of(ServiceDeviceSupport.Flags.BUSY_CHECKING));
                         break;
                     case HERE:
-                    // case HERER:
-		    // case HEREL:
+                        // case HERER:
+                        // case HEREL:
                         deviceSupport = new ServiceDeviceSupport(new HereSupport(), EnumSet.of(ServiceDeviceSupport.Flags.BUSY_CHECKING));
                         break;
                     case TECLASTH30:

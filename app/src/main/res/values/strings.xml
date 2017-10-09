@@ -490,4 +490,6 @@
     <string name="equalizer_band_2">1.1 kHz</string>
     <string name="equalizer_band_3">3.3 kHz</string>
     <string name="equalizer_band_4">6.8 kHz</string>
+    <string name="audio_effect_bitcrusher">Bit Crusher</string>
+    <string name="audio_effect_chorus">Chorus</string>
 </resources>

@@ -40,7 +40,7 @@ public enum DeviceType {
     EXRIZUK8(42, R.drawable.ic_device_hplus, R.drawable.ic_device_hplus_disabled),
     NO1F1(50, R.drawable.ic_device_hplus, R.drawable.ic_device_hplus_disabled),
     TECLASTH30(60, R.drawable.ic_device_h30_h10, R.drawable.ic_device_h30_h10_disabled),
-    // Single device made of L + R (71, 71)
+    // Single device made of L + R (71, 72)
     // but each earbut can be controlled independently
     HERE(70, R.drawable.ic_device_default, R.drawable.ic_device_default_disabled),
     // HERER(71, R.drawable.ic_device_here, R.drawable.ic_device_here_disabled),

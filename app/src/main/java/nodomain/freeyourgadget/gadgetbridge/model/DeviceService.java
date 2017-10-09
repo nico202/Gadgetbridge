@@ -19,7 +19,10 @@ package nodomain.freeyourgadget.gadgetbridge.model;
 
 import android.support.annotation.Nullable;
 
+import java.util.List;
+
 import nodomain.freeyourgadget.gadgetbridge.devices.EventHandler;
+import nodomain.freeyourgadget.gadgetbridge.entities.AudioEffect;
 import nodomain.freeyourgadget.gadgetbridge.entities.AudioEffectType;
 import nodomain.freeyourgadget.gadgetbridge.impl.GBDevice;
 import nodomain.freeyourgadget.gadgetbridge.service.DeviceCommunicationService;
@@ -157,5 +160,5 @@ public interface DeviceService extends EventHandler {
      */
     void requestDeviceInfo();
 
-    void onSetAudioProperty(int property, float[] params);
+    void onSetAudioProperty(AudioEffect effect);
 }

@@ -20,8 +20,10 @@ package nodomain.freeyourgadget.gadgetbridge.devices;
 import android.net.Uri;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.UUID;
 
+import nodomain.freeyourgadget.gadgetbridge.entities.AudioEffect;
 import nodomain.freeyourgadget.gadgetbridge.entities.AudioEffectType;
 import nodomain.freeyourgadget.gadgetbridge.model.Alarm;
 import nodomain.freeyourgadget.gadgetbridge.model.CalendarEventSpec;
@@ -80,7 +82,7 @@ public interface EventHandler {
 
     void onSetConstantVibration(int integer);
 
-    void onSetAudioProperty(int property, float[] params);
+    void onSetAudioProperty(AudioEffect effect);
 
     void onScreenshotReq();
 

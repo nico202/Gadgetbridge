@@ -26,8 +26,10 @@ import org.slf4j.LoggerFactory;
 
 import java.util.ArrayList;
 import java.util.EnumSet;
+import java.util.List;
 import java.util.UUID;
 
+import nodomain.freeyourgadget.gadgetbridge.entities.AudioEffect;
 import nodomain.freeyourgadget.gadgetbridge.entities.AudioEffectType;
 import nodomain.freeyourgadget.gadgetbridge.impl.GBDevice;
 import nodomain.freeyourgadget.gadgetbridge.model.Alarm;
@@ -154,8 +156,8 @@ public class ServiceDeviceSupport implements DeviceSupport {
     }
 
     @Override
-    public void onSetAudioProperty(int property, float [] params) {
-	delegate.onSetAudioProperty(property, params);
+    public void onSetAudioProperty(AudioEffect effect) {
+	delegate.onSetAudioProperty(effect);
     }
 
     @Override
