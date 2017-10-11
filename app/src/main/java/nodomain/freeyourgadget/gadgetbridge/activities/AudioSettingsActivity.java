@@ -19,7 +19,10 @@ package nodomain.freeyourgadget.gadgetbridge.activities;
 
 import android.os.Bundle;
 import android.view.View;
-import android.widget.CheckedTextView;
+import android.widget.CompoundButton;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
+import android.widget.Switch;
 import android.widget.SeekBar;
 import android.widget.TextView;
 
@@ -91,34 +94,75 @@ public class AudioSettingsActivity extends AbstractGBActivity {
         // right now, I'm just showing 0 dB, Called after changeListener sets the value on
         // the device too.
 
-        Map<Integer, AudioEffectType> checkboxesIds = new HashMap<Integer, AudioEffectType>();
-        checkboxesIds.put(R.id.audio_effect_echo, AudioEffectType.ECHO);
-        checkboxesIds.put(R.id.audio_effect_bassboost, AudioEffectType.BASSBOOST);
-        checkboxesIds.put(R.id.audio_effect_fuzz, AudioEffectType.FUZZ);
-        checkboxesIds.put(R.id.audio_effect_flange, AudioEffectType.FLANGE);
-        checkboxesIds.put(R.id.audio_effect_reverb, AudioEffectType.REVERB);
-        checkboxesIds.put(R.id.audio_effect_noisemask, AudioEffectType.NOISEMASK);
-        checkboxesIds.put(R.id.audio_effect_bitcrusher, AudioEffectType.BITCRUSHER);
-        checkboxesIds.put(R.id.audio_effect_chorus, AudioEffectType.CHORUS);
+        Map<Integer, AudioEffectType> switchIds = new HashMap<Integer, AudioEffectType>();
+        switchIds.put(R.id.audio_effect_echo, AudioEffectType.ECHO);
+        switchIds.put(R.id.audio_effect_bassboost, AudioEffectType.BASSBOOST);
+        switchIds.put(R.id.audio_effect_fuzz, AudioEffectType.FUZZ);
+        switchIds.put(R.id.audio_effect_flange, AudioEffectType.FLANGE);
+        switchIds.put(R.id.audio_effect_reverb, AudioEffectType.REVERB);
+        switchIds.put(R.id.audio_effect_noisemask, AudioEffectType.NOISEMASK);
+        switchIds.put(R.id.audio_effect_bitcrusher, AudioEffectType.BITCRUSHER);
+        switchIds.put(R.id.audio_effect_chorus, AudioEffectType.CHORUS);
 
-        for (int id : checkboxesIds.keySet()) {
-            final AudioEffectType effect = checkboxesIds.get(id);
+        for (int id : switchIds.keySet()) {
+            final AudioEffectType effect = switchIds.get(id);
+            Switch s = (Switch) findViewById(id);
+            s.setOnCheckedChangeListener(
+                    new CompoundButton.OnCheckedChangeListener() {
+                        public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                            LOG.info("Toggled " + effect.name());
+                            applyEffect(new AudioEffect(effect, isChecked));
+                        }
+                    });
+        }
 
-            ((CheckedTextView) findViewById(id)).setOnClickListener(new View.OnClickListener() {
+        List<String> defaultPresets = new ArrayList<String>();
+        defaultPresets.add("8bit");
+        defaultPresets.add("Example");
+
+        RadioGroup presets = (RadioGroup)findViewById(R.id.audio_presets);
+        for (String preset : defaultPresets) {
+            RadioButton radioButton = new RadioButton(getBaseContext());
+            radioButton.setText(preset);
+            presets.addView(radioButton);
+            radioButton.setOnClickListener(new View.OnClickListener() {
+                @Override
                 public void onClick(View v) {
-                    ((CheckedTextView) v).toggle();
-                    LOG.info("Toggled " + effect.name());
-                    applyEffect(new AudioEffect(effect, ((CheckedTextView) v).isChecked()));
+                    RadioButton r = (RadioButton) findViewById(getCheckedPreset());
+                    applyPreset(r.getText().toString());
                 }
             });
         }
+    }
+
+    private int getCheckedPreset() {
+        return ((RadioGroup)findViewById(R.id.audio_presets)).getCheckedRadioButtonId();
     }
 
     private void setdB(int volume) {
         volume_text.setText(" " + (volume - 30) + " dB");
     }
 
-    void applyEffect(AudioEffect effect) {
+    private void applyPreset(String preset) {
+        LOG.info("Applying preset " + preset);
+        switch(preset) {
+            case "8bit":
+                LOG.debug("8bit");
+                ArrayList<Object> values = new ArrayList<Object>();
+                values.add("3byte");
+                values.add(256.0f); // bits
+                values.add(20000.0f); // freq
+                AudioEffect effect = new AudioEffect(AudioEffectType.BITCRUSHER,
+                        true, values);
+                GBApplication.deviceService().onSetAudioProperty(effect);
+
+                break;
+            default:
+                LOG.error("Missing preset! (Programming error!?");
+        }
+    }
+
+    private void applyEffect(AudioEffect effect) {
         GBApplication.deviceService().onSetAudioProperty(effect);
     }
 }
